@@ -15,7 +15,7 @@ class ApiTest {
     void testAll() {
         ServerConfig config = App.serverConfig("src/main/java/app");
         HttpServer server = HttpServer.config(config).build();
-        Results results = Runner.path("classpath:app/api/simple/simple.feature")
+        Results results = Runner.path("classpath:app/api/simple/simple.feature","classpath:app/api/data/outline.feature","classpath:app/api/simple/reset.feature")
                 .systemProperty("url.base", "http://localhost:" + server.getPort())
                 .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());

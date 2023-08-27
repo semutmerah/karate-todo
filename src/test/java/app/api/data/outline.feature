@@ -1,9 +1,10 @@
 Feature: simple data driven testing
 
   Background:
-    * url 'http://localhost:8080/api/todos'
+    * def urlBase = karate.properties['url.base'] || karate.get('urlBase', 'http://localhost:8080')
+    * url urlBase + '/api/todos'
 
-  Scenario Outline:
+  Scenario Outline: Add 10 todos
     * request { title: '#(title)', complete: false }
     * method post
     * match response == { id: '#string', title: '#(title)', complete: false }
@@ -11,6 +12,13 @@ Feature: simple data driven testing
 
     Examples:
       | title |
-      | One   |
-      | Two   |
-      | Three |
+      | Mandiin Kucing |
+      | Mandiin Anak |
+      | Masak |
+      | Nyuci Baju |
+      | Nyetrika |
+      | Tidur |
+      | Berenang |
+      | Jogging |
+      | Ngepel |
+      | Belajar |
