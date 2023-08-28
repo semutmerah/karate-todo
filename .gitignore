@@ -9,3 +9,5 @@ screenshots
 output.xml
 log.html
 report.html
+*.pytest_cache
+*__pycache__
